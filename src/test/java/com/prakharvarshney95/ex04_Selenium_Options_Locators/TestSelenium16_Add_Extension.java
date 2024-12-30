@@ -12,7 +12,7 @@ public class TestSelenium16_Add_Extension {
 
     @Description("Options Class")
     @Test
-    public void test_Selenium15() throws Exception {
+    public void test_Selenium16_Add_Extension() throws Exception {
 
         // EdgeOptions, ChromeOptions, FirefoxOptions, SafariOptions
         EdgeOptions edgeOptions = new EdgeOptions();
