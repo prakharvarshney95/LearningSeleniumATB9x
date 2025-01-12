@@ -1,4 +1,4 @@
-package com.prakharvarshney95.ex_15_relative_locators_ATB9x;
+package com.prakharvarshney95.ex15_relative_locators_ATB9x;
 
 import io.qameta.allure.Description;
 import org.openqa.selenium.By;
@@ -10,9 +10,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import static org.openqa.selenium.support.locators.RelativeLocator.with;
-
-public class TestSelenium41_RL_2 {
+public class TestSelenium42_RL_3 {
 
     EdgeDriver driver;
 
@@ -32,15 +30,19 @@ public class TestSelenium41_RL_2 {
         // iframe
         driver.switchTo().frame("result");
 
+        WebElement emailInputBox = driver.findElement(By.id("username"));
+        emailInputBox.sendKeys("augtest_040823@idrive.com");
+
         WebElement submit = driver.findElement(By.xpath("//form[@id='form']/button"));
         submit.click();
 
         WebElement username_element = driver.findElement(By.xpath("//input[@id='username']"));
-        WebElement error_element = driver.findElement(with(By.tagName("small")).below(username_element));
+        WebElement error_element = driver.findElement(By.xpath("//small[contains(text(),'Username must be les than 15 characters')]"));
+//        WebElement error_element = driver.findElement(with(By.tagName("small")).below(username_element));
 
         String errorText = error_element.getText();
         Assert.assertTrue(error_element.isDisplayed());
-        Assert.assertEquals(errorText,"Username must be at least 3 characters");
+        Assert.assertEquals(errorText,"Username must be les than 15 characters");
 
     }
 
@@ -53,6 +55,9 @@ public class TestSelenium41_RL_2 {
         }
         driver.quit();
     }
+
+
+
 
 
 }

@@ -18,8 +18,6 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.List;
 
-import static org.bouncycastle.asn1.crmf.SinglePubInfo.web;
-
 public class TestSelenium29_Actions_class_makemytrip {
 
    EdgeDriver driver;

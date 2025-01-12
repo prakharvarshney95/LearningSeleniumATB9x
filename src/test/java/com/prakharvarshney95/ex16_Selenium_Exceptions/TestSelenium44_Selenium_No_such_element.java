@@ -1,21 +1,18 @@
-package com.prakharvarshney95.ex_15_relative_locators_ATB9x;
+package com.prakharvarshney95.ex16_Selenium_Exceptions;
 
 import io.qameta.allure.Description;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.util.List;
-
 import static org.openqa.selenium.support.locators.RelativeLocator.with;
 
-
-public class TestSelenium43_RL_4 {
+public class TestSelenium44_Selenium_No_such_element {
 
     EdgeDriver driver;
 
@@ -26,24 +23,16 @@ public class TestSelenium43_RL_4 {
         driver = new EdgeDriver(edgeOptions);
     }
 
-    @Description("Verify Relative Locators")
+    @Description("Verify Selenium exception")
     @Test
-    public void test_actions() throws InterruptedException {
-        driver.get("https://www.aqi.in/real-time-most-polluted-city-ranking");
-        driver.manage().window().maximize();
-
-
-        List<WebElement> locations = driver.findElements(By.cssSelector("div.location-name > p"));
-        for (WebElement e  : locations){
-            System.out.println(e.getText());
-            String rank = driver.findElement(with(By.tagName("p")).toLeftOf(e)).getText();
-            String aqi = driver.findElement(with(By.tagName("span")).toRightOf(e)).getText();
-
-
-            System.out.println("| +" + rank +" | " + e.getText() + " | " + aqi + " | ");
-
-
+    public void test_actions(){
+        driver.get("https://app.vwo.com/");
+        try {
+            driver.findElement(By.id("pramod"));
+        } catch (NoSuchElementException e) {
+            System.out.println(e.getMessage());;
         }
+
 
     }
 
