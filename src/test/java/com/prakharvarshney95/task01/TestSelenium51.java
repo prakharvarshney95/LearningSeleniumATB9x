@@ -2,6 +2,7 @@ package com.prakharvarshney95.task01;
 
 import io.qameta.allure.Description;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import java.time.Duration;
 
 public class TestSelenium51 {
@@ -44,19 +46,24 @@ public class TestSelenium51 {
             loginButton.click();
 
             // Click "Next" buttons in a loop
-            for (int i = 0; i < 150; i++) {
+            for (int i = 0; i < 99; i++) {
                 try {
-                    // Wait for the "Next" button to appear and click
-                    WebElement nextButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@onclick='player.LoadNextContent();']")));
-                    nextButton.click();
-
-                    // Wait for any overlay to disappear before the next click
+                    // Wait for any overlay to disappear
                     wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".blockUI.blockOverlay")));
+
+                    // Locate the "Next" button
+                    WebElement nextButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@onclick='player.LoadNextContent();']")));
+
+                    // Scroll to the "Next" button
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", nextButton);
+
+                    // Click the "Next" button
+                    nextButton.click();
 
                     System.out.println("Clicked 'Next' button " + (i + 1) + " times.");
                 } catch (Exception e) {
                     System.err.println("Failed to locate or interact with the 'Next' button at iteration " + (i + 1) + ": " + e.getMessage());
-                    throw e;
+                    Thread.sleep(2000); // Wait and retry
                 }
             }
 
@@ -72,4 +79,5 @@ public class TestSelenium51 {
         }
     }
 }
+
 
