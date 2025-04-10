@@ -26,7 +26,7 @@ public class TestSelenium51 {
 
         try {
             // Navigate to the URL
-            driver.get("https://courses.thetestingacademy.com/courses/9x-live-job-ready-automation-tester-blueprint-with-java-by-pramod-dutta-9xatb/contents/66d9853ee2b83");
+            driver.get("https://courses.thetestingacademy.com/courses/9x-live-job-ready-automation-tester-blueprint-with-java-by-pramod-dutta-9xatb/contents/66d9853ee7935");
 
             // Use WebDriverWait instead of Thread.sleep
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -46,7 +46,7 @@ public class TestSelenium51 {
             loginButton.click();
 
             // Click "Next" buttons in a loop
-            for (int i = 0; i < 99; i++) {
+            for (int i = 0; i < 60; i++) {
                 try {
                     // Wait for any overlay to disappear
                     wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".blockUI.blockOverlay")));
