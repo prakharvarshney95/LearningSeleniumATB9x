@@ -23,7 +23,6 @@ public class MaxJourney2 {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         try {
-            driver.get("https://neosit.axismaxlife.com/utp-service/api/banca/ybl/v1/processhandler?productCode=ssp&cid=uoPY5KT+POv8qwtKPWRLTw==&utm_medium=IRIS&utm_source=Whatsapp&utm_campaign=march_term");
 
             Thread.sleep(3000);
 
@@ -89,7 +88,6 @@ public class MaxJourney2 {
 
             Thread.sleep(8000);
 
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@onclick='submitSuccessForm()']"))).click();
 
             Thread.sleep(15000);
 
